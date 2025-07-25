@@ -1,0 +1,56 @@
+{
+    "name": "@jahia/jcontent-slider",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "yarn webpack",
+        "webpack": "node --max_old_space_size=2048 ./node_modules/webpack/bin/webpack.js",
+        "build:analyze": "yarn build --analyze",
+        "build:production": "yarn build --mode=production",
+        "build:production-analyze": "yarn build:production --analyze",
+        "watch": "yarn webpack --watch",
+        "clean": "rimraf *.log src/main/resources/javascript/apps",
+        "clean:all": "yarn clean && rimraf node_modules node"
+    },
+    "description": "jContent - Slider",
+    "main": "index.js",
+    "repository": "git@github.com:Jahia/jcontent-slider.git",
+    "author": "Jahia Core Team <core@jahia.com>",
+    "license": "SEE LICENSE IN LICENSE.txt FILE",
+    "jahia": {
+        "remotes": {
+            "jahia": "javascript/apps/remoteEntry.js"
+        },
+        "apps": {
+            "jahia": "configs/contentEditorSlider.jsp"
+        }
+    },
+    "dependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "prop-types": "^15.6.2",
+        "@jahia/ui-extender": "^1.1.1",
+        "@material-ui/core": "^4.12.4"
+    },
+    "devDependencies": {
+        "@babel/compat-data": "^7.28.0",
+        "@babel/core": "^7.28.0",
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+        "@babel/plugin-transform-runtime": "^7.28.0",
+        "@babel/polyfill": "^7.12.1",
+        "@babel/preset-env": "^7.28.0",
+        "@babel/preset-react": "^7.27.1",
+        "babel-loader": "^10.0.0",
+        "babel-plugin-lodash": "^3.3.4",
+        "case-sensitive-paths-webpack-plugin": "^2.4.0",
+        "clean-webpack-plugin": "^3.0.0",
+        "copy-webpack-plugin": "^5.1.2",
+        "css-loader": "^7.1.2",
+        "file-loader": "^6.2.0",
+        "redux-mock-store": "^1.5.5",
+        "sass-loader": "^16.0.5",
+        "style-loader": "^4.0.0",
+        "webpack": "^5.100.2",
+        "webpack-bundle-analyzer": "^4.10.2",
+        "webpack-cli": "^4.2.0"
+    }
+}

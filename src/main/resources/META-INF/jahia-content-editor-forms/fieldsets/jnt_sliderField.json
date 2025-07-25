@@ -1,0 +1,9 @@
+{
+  "name": "jnt:sliderField",
+  "fields": [
+    {
+      "name": "percent",
+      "selectorType": "Slider"
+    }
+  ]
+}
