@@ -9,7 +9,7 @@
     <groupId>org.jahia.community</groupId>
     <artifactId>jcontent-slider</artifactId>
     <name>jContent - Slider</name>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <description>Slider extension for jContent</description>
 
@@ -18,6 +18,14 @@
         <require-capability>osgi.extender;filter:="(osgi.extender=org.jahia.bundles.blueprint.extender.config)"
         </require-capability>
     </properties>
+
+    <scm>
+        <connection>scm:git:git@github.com:Jahia/jcontent-slider.git</connection>
+        <developerConnection>scm:git:git@github.com:Jahia/jcontent-slider.git</developerConnection>
+        <url>https://github.com/Jahia/jcontent-slider</url>
+        <tag>HEAD</tag>
+    </scm>
+
 
     <repositories>
         <repository>
@@ -94,8 +102,4 @@
             </plugin>
         </plugins>
     </build>
-
-  <scm>
-    <tag>1_0_0</tag>
-  </scm>
 </project>
