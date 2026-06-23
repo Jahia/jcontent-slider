@@ -70,6 +70,19 @@ describe('SliderField', () => {
         expect(screen.getByRole('slider')).toHaveAttribute('aria-valuenow', '0');
     });
 
+    it('defaults to 0 when value is a non-numeric string', () => {
+        render(
+            <SliderField
+                id="myField"
+                field={buildField()}
+                value="abc"
+                onChange={() => {}}
+            />
+        );
+
+        expect(screen.getByRole('slider')).toHaveAttribute('aria-valuenow', '0');
+    });
+
     it('calls onChange with a STRING when the slider value changes', () => {
         const onChange = jest.fn();
         render(
