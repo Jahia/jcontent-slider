@@ -1,18 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import * as PropTypes from 'prop-types';
 import './SliderField.css';
 import Slider from '@material-ui/core/Slider';
 
 const SliderField = ({id, field, value, onChange}) => {
-    const [valueText] = useState('');
-
     return (
         <Slider id={id}
                 name={field.name}
-                readOnly={field.readOnly}
-                aria-label="Default"
+                disabled={field.readOnly}
+                aria-label={field.displayName || field.name}
                 valueLabelDisplay="auto"
-                value={valueText || value}
+                value={value ? Number(value) : 0}
                 onChange={(event, newValue) => {
                     onChange(newValue.toString());
                 }}
@@ -21,7 +19,11 @@ const SliderField = ({id, field, value, onChange}) => {
 };
 
 SliderField.propTypes = {
-    field: PropTypes.object,
+    field: PropTypes.shape({
+        name: PropTypes.string,
+        displayName: PropTypes.string,
+        readOnly: PropTypes.bool
+    }).isRequired,
     id: PropTypes.string.isRequired,
     value: PropTypes.string,
     onChange: PropTypes.func.isRequired
