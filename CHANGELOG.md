@@ -9,7 +9,6 @@ All notable changes to the jContent Slider module are documented in this file.
 - The slider value is passed to Material-UI as a number (it arrived as a string), while the Content Editor `onChange` contract still stores a string.
 - Removed a dead `valueText` state hook that was always empty.
 - Replaced `SliderField.css`, which contained unrelated copy-paste rules (`.sec-html` / `section ol,ul`) that leaked global styles into the Content Editor, with a scoped rule.
-
 - Value coercion now uses `parseFloat` rather than `Number`, so empty / `null` / `undefined` values genuinely fall through to the documented `0` default (`Number('')` silently coerced to `0` and bypassed the guard).
 
 ### Accessibility
