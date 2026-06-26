@@ -1,12 +1,14 @@
 import React from 'react';
-import * as PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './SliderField.css';
 import Slider from '@material-ui/core/Slider';
 
 const SliderField = ({id, field, value, onChange}) => {
     // Value arrives as a string from the Content Editor; MUI Slider needs a number.
-    // Guard against non-numeric / empty values (e.g. dirty JCR data) which would give NaN.
-    const numericValue = Number(value);
+    // parseFloat (not Number) is used so that empty / null / undefined parse to NaN
+    // and fall through to the 0 default — Number('') would silently coerce to 0 and
+    // bypass the guard. Dirty JCR data (e.g. 'abc') is likewise defaulted to 0.
+    const numericValue = parseFloat(value);
     const sliderValue = Number.isFinite(numericValue) ? numericValue : 0;
 
     return (

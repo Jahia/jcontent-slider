@@ -1,3 +1,17 @@
 .slider-field {
     width: 100%;
 }
+
+/*
+ * AAA focus indicator (WCAG 2.2 SC 2.4.12 Focus Appearance, enhanced).
+ * MUI v4's default thumb focus halo is a low-contrast translucent shadow that
+ * does not reliably meet the contrast / focus-area requirements against the
+ * light Content Editor background. Replace it with a solid two-tone ring: an
+ * inner white separator plus an outer dark-blue indicator, giving a clear,
+ * high-contrast change from the unfocused state on both light and dark surfaces.
+ */
+.slider-field .MuiSlider-thumb.Mui-focusVisible,
+.slider-field .MuiSlider-thumb:focus,
+.slider-field .MuiSlider-thumb:focus-visible {
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 5px #005fcc;
+}

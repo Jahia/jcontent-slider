@@ -83,6 +83,18 @@ describe('SliderField', () => {
         expect(screen.getByRole('slider')).toHaveAttribute('aria-valuenow', '0');
     });
 
+    it('defaults to 0 when value is omitted (undefined)', () => {
+        render(
+            <SliderField
+                id="myField"
+                field={buildField()}
+                onChange={() => {}}
+            />
+        );
+
+        expect(screen.getByRole('slider')).toHaveAttribute('aria-valuenow', '0');
+    });
+
     it('calls onChange with a STRING when the slider value changes', () => {
         const onChange = jest.fn();
         render(
@@ -116,8 +128,14 @@ describe('SliderField', () => {
         );
 
         // MUI v4 expresses the disabled state via the Mui-disabled class on the
-        // root and thumb rather than a native disabled attribute.
-        expect(screen.getByRole('slider')).toHaveClass('Mui-disabled');
+        // root and thumb, and — crucially for keyboard users — removes the thumb
+        // from the tab order (no tabindex="0"), so it cannot be focused or edited.
+        // This is the real mechanism that makes a read-only field non-interactive;
+        // an event-level fireEvent.keyDown bypasses focusability and is therefore
+        // not a faithful proxy for "the user cannot change it".
+        const slider = screen.getByRole('slider');
+        expect(slider).toHaveClass('Mui-disabled');
+        expect(slider).not.toHaveAttribute('tabindex', '0');
         expect(container.querySelector('.MuiSlider-root')).toHaveClass('Mui-disabled');
     });
 });
