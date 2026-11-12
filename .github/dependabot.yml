@@ -53,3 +53,9 @@ updates:
         update-types: ["version-update:semver-major"]
       - dependency-name: "typescript"
         update-types: ["version-update:semver-major"]
+      # @testing-library/react 13+ requires React 18; React stays on 16 (Module Federation, platform-provided)
+      - dependency-name: "@testing-library/react"
+        update-types: ["version-update:semver-major"]
+      # eslint-plugin-jest 27+ needs eslint >=7 (29 needs >=8.57); this repo stays on eslint 6 (@jahia/eslint-config 1.x)
+      - dependency-name: "eslint-plugin-jest"
+        update-types: ["version-update:semver-major"]
