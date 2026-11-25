@@ -9,7 +9,7 @@
     <groupId>org.jahia.community</groupId>
     <artifactId>jcontent-slider</artifactId>
     <name>jContent - Slider</name>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>bundle</packaging>
     <description>Slider extension for jContent</description>
 
